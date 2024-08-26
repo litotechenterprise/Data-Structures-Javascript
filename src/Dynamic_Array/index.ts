@@ -1,21 +1,28 @@
-export class DynamicArray {
+interface HashTable {
+  [key: number]: any;
+}
+
+export default class DynamicArray {
+  length: number;
+  data: HashTable;
+
   constructor() {
     this.length = 0;
     this.data = {};
   }
 
-  get(index) {
+  get(index: number): any {
     return this.data[index];
   }
 
-  push(item) {
-    this.data[this.data.length] = item;
-    this.length += 1;
+  push(item: any) {
+    this.data[this.length] = item;
+    this.length++;
 
     return this.length;
   }
 
-  pop() {
+  pop(): any {
     if (this.length === 0) {
       return undefined;
     }
@@ -26,7 +33,7 @@ export class DynamicArray {
     return poppedItem;
   }
 
-  insert(index, item) {
+  insert(index: number, item: any): HashTable | undefined {
     if (index > this.length - 1 || index < 0) {
       return undefined;
     }
@@ -41,7 +48,7 @@ export class DynamicArray {
     return this.data;
   }
 
-  remove(index) {
+  remove(index: number): any {
     if (this.length === 0) {
       return undefined;
     }
